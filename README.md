@@ -29,7 +29,8 @@ Run the model-to-text generation:
 ```
 ./02_m2t_openapi_flask.sh
 ```
-
+## Raspi Config
+Read about the environment details this project was integrated into [here](link to google doc)
 
 ## References
 
