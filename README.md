@@ -29,8 +29,8 @@ Run the model-to-text generation:
 ```
 ./02_m2t_openapi_flask.sh
 ```
-## Raspi Config
-Read about the environment details this project was integrated into [here](link to google doc)
+## Raspberry Pi Configuration
+Read about the environment details this project was integrated into [here](https://docs.google.com/document/d/1OXGWPZJjqQrg9VodgYT9wRHfVMFTjsyXz5kDNvTUQwM/edit?usp=sharing)
 
 ## References
 
