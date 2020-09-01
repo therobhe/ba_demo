@@ -1,0 +1,140 @@
+asyncapi: 2.0.0
+channels:
+  fan/3/decreaseSpeed:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: decrease_fan_speed
+      summary: decrease_fan_speed request on device dc_motor_fan
+  fan/3/increaseSpeed:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: increase_fan_speed
+      summary: increase_fan_speed request on device dc_motor_fan
+  fan/3/off:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: fan_turn_off
+      summary: fan_turn_off request on device dc_motor_fan
+  fan/3/setFanSpeed:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: fan_set
+      summary: fan_set request on device dc_motor_fan
+  heating/2/off:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: deactivate_heating
+      summary: deactivate_heating request on device relay_heating
+  heating/2/on:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: activate_heating
+      summary: activate_heating request on device relay_heating
+  humidity:
+    publish:
+      message:
+        payload:
+          properties:
+            humidity:
+              description: Humidity measured as percentage
+              minimum: 0
+              type: integer
+            id:
+              description: Id of the humidity sensor
+              minimum: -10
+              type: integer
+            sentAt:
+              description: Date and time when the message was sent
+              format: date-time
+              type: object
+          type: object
+      operationId: get_humidity
+      summary: get_humidity request on device temperature_humidity_sensor
+  light:
+    publish:
+      message:
+        payload:
+          properties:
+            id:
+              description: Id of the humidity sensor
+              minimum: -10
+              type: integer
+            light:
+              description: light measured as lumen
+              minimum: 0
+              type: integer
+            sentAt:
+              description: Date and time when the message was sent
+              format: date-time
+              type: object
+          type: object
+      operationId: get_light_intensity
+      summary: get_light_intensity request on device light_sensor
+  light/1/off:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: switch_off_lamp
+      summary: switch_off_lamp request on device philipshue
+  light/1/on:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: switch_on_lamp
+      summary: switch_on_lamp request on device philipshue
+  temperature:
+    publish:
+      message:
+        payload:
+          properties:
+            id:
+              description: Id of the humidity sensor
+              minimum: -10
+              type: integer
+            sentAt:
+              description: Date and time when the message was sent
+              format: date-time
+              type: object
+            temperature:
+              description: Temperature measured as celcuis
+              minimum: 0
+              type: integer
+          type: object
+      operationId: get_temperature
+      summary: get_temperature request on device temperature_humidity_sensor
+  tv/4/off:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: switch_off_tv
+      summary: switch_off_tv request on device samsung_tv
+  tv/4/on:
+    subscribe:
+      message:
+        payload:
+          type: object
+      operationId: switch_on_tv
+      summary: switch_on_tv request on device samsung_tv
+info:
+  description: Asynchronous API Generation from WoTDL ontology
+  title: WoTDL-based AsyncAPI generation
+  version: 1.0.0
+servers:
+- mosquitto:
+    url: 0.0.0.0:1883
+  protocol: mqtt

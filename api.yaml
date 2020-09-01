@@ -1,0 +1,165 @@
+info:
+  title: TODO
+  version: 0.0.1
+openapi: 3.0.0
+paths:
+  /ambientlight:
+    get:
+      operationId: get_light_intensity
+      responses:
+        '200':
+          description: OK
+      summary: get_light_intensity request on device light_sensor
+  /fan:
+    post:
+      operationId: fan_set
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                target_speed:
+                  type: number
+              required:
+              - target_speed
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Created
+      summary: fan_set request on device dc_motor_fan
+  /fan/decrease:
+    post:
+      operationId: decrease_fan_speed
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                decrement:
+                  type: number
+              required:
+              - decrement
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Created
+      summary: decrease_fan_speed request on device dc_motor_fan
+  /fan/increase:
+    post:
+      operationId: increase_fan_speed
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                increment:
+                  type: number
+              required:
+              - increment
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Created
+      summary: increase_fan_speed request on device dc_motor_fan
+  /fan/off:
+    post:
+      operationId: fan_turn_off
+      responses:
+        '201':
+          description: Created
+      summary: fan_turn_off request on device dc_motor_fan
+  /heating/off:
+    post:
+      operationId: deactivate_heating
+      responses:
+        '201':
+          description: Created
+      summary: deactivate_heating request on device relay_heating
+  /heating/on:
+    post:
+      operationId: activate_heating
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                power:
+                  type: number
+              required:
+              - power
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Created
+      summary: activate_heating request on device relay_heating
+  /humidity:
+    get:
+      operationId: get_humidity
+      responses:
+        '200':
+          description: OK
+      summary: get_humidity request on device temperature_humidity_sensor
+  /lights/off:
+    put:
+      operationId: switch_off_lamp
+      responses: {}
+      summary: switch_off_lamp request on device philipshue
+  /lights/on:
+    put:
+      operationId: switch_on_lamp
+      responses: {}
+      summary: switch_on_lamp request on device philipshue
+  /temperature:
+    get:
+      operationId: get_temperature
+      responses:
+        '200':
+          description: OK
+      summary: get_temperature request on device temperature_humidity_sensor
+  /tv/{path-param}/needed/off:
+    get:
+      operationId: switch_off_tv
+      parameters:
+      - in: query
+        name: queryParam1
+        schema:
+          type: string
+      - in: path
+        name: path-param
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: switch_off_tv request on device samsung_tv
+  /tv/{path-param}/needed/on:
+    post:
+      operationId: switch_on_tv
+      parameters:
+      - in: path
+        name: path-param
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                power:
+                  type: number
+              required:
+              - power
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Created
+      summary: switch_on_tv request on device samsung_tv
+servers:
+- url: https://10.0.1.200:9000/api

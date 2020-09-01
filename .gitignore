@@ -1,0 +1,9 @@
+/.idea/*
+/flask_out/*
+api.raml
+written_api.yaml
+config.json
+*.bak
+
+# Project exclude paths
+/venv/
